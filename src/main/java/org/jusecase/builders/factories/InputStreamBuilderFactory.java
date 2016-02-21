@@ -1,15 +1,16 @@
 package org.jusecase.builders.factories;
 
-import org.jusecase.builders.builders.streams.InputStreamBuilder;
+import org.jusecase.builders.builders.streams.ResourceInputStreamBuilder;
+import org.jusecase.builders.builders.streams.StringInputStreamBuilder;
 
 public class InputStreamBuilderFactory {
 
-    public static InputStreamBuilder stringStream(final String content){
-        return new InputStreamBuilder().withString(content);
+    public static StringInputStreamBuilder stringStream(final String content){
+        return new StringInputStreamBuilder().withString(content);
     }
 
-    public static InputStreamBuilder resourceStream(final String resource){
-        return new InputStreamBuilder().withResource(resource);
+    public static ResourceInputStreamBuilder resourceStream(final String resource){
+        return new ResourceInputStreamBuilder().withResource(resource);
     }
 
 }

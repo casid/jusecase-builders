@@ -3,7 +3,7 @@ package org.jusecase.builders;
 import org.jusecase.builders.builders.collections.*;
 import org.jusecase.builders.builders.collections.CollectionBuilder;
 import org.jusecase.builders.builders.misc.DateBuilder;
-import org.jusecase.builders.builders.streams.InputStreamBuilder;
+import org.jusecase.builders.builders.streams.ResourceInputStreamBuilder;
 import org.jusecase.builders.newables.NewableArrayList;
 
 import java.util.Collection;
@@ -46,8 +46,8 @@ public class BuilderFactory {
         return new ImmutableCollectionBuilder<T, TCollectionType>(new NewableArrayList());
     }
 
-    public static InputStreamBuilder createInputStreamBuilder() {
-        return new InputStreamBuilder();
+    public static ResourceInputStreamBuilder createInputStreamBuilder() {
+        return new ResourceInputStreamBuilder();
     }
 
     public static DateBuilder createDateBuilder() {
