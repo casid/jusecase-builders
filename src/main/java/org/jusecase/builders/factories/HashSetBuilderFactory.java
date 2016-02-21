@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Set;
 
 public class HashSetBuilderFactory {
-    public static <T> CollectionBuilder<T, Set<T>> hashSet(final T... items){
+    public static <T> CollectionBuilder<T, Set<T>> set(final T... items){
         return new CollectionBuilder<T, Set<T>>(new NewableHashSet()).with(items);
     }
 

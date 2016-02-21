@@ -2,7 +2,6 @@ package org.jusecase.builders.factories;
 
 import org.junit.Test;
 import org.jusecase.builders.builders.collections.*;
-import org.jusecase.builders.builders.structures.ArrayBuilder;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -19,7 +18,7 @@ public class HashSetBuilderFactoryTest {
     @Test
     public void testNotNull() throws Exception {
         assertNotNull(array(1,2));
-        assertNotNull(hashSet(1,2));
+        assertNotNull(set(1,2));
         assertNotNull(copy(set1));
         assertNotNull(aggregate(set1, set2));
         assertNotNull(unmodifiable(set1));
@@ -28,7 +27,7 @@ public class HashSetBuilderFactoryTest {
 
     @Test
     public void testBuilderClass() throws Exception {
-        assertEquals(CollectionBuilder.class, hashSet(1,2).getClass());
+        assertEquals(CollectionBuilder.class, set(1,2).getClass());
         assertEquals(CopyCollectionBuilder.class, copy(set1).getClass());
         assertEquals(AggregateCollectionBuilder.class, aggregate(set1, set2).getClass());
         assertEquals(UnmodifiableCollectionBuilder.class, unmodifiable(set1).getClass());
