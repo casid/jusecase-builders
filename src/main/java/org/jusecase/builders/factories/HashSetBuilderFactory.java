@@ -1,11 +1,10 @@
 package org.jusecase.builders.factories;
 
-import org.jusecase.builders.builders.collections.AggregateCollectionBuilder;
-import org.jusecase.builders.builders.collections.CollectionBuilder;
-import org.jusecase.builders.builders.collections.CopyCollectionBuilder;
-import org.jusecase.builders.builders.collections.UnmodifiableCollectionBuilder;
+import org.jusecase.builders.builders.collections.*;
+import org.jusecase.builders.newables.NewableArrayList;
 import org.jusecase.builders.newables.NewableHashSet;
 
+import java.util.List;
 import java.util.Set;
 
 public class HashSetBuilderFactory {
@@ -21,7 +20,11 @@ public class HashSetBuilderFactory {
         return new AggregateCollectionBuilder<T, Set<T>>(new NewableHashSet()).with(sets);
     }
 
-    public static <T> UnmodifiableCollectionBuilder<T, Set<T>> unmodifiable(final Set<T> list){
-        return new UnmodifiableCollectionBuilder<T, Set<T>>(new NewableHashSet()).with(list);
+    public static <T> UnmodifiableCollectionBuilder<T, Set<T>> unmodifiable(final Set<T> set){
+        return new UnmodifiableCollectionBuilder<T, Set<T>>(new NewableHashSet()).with(set);
+    }
+
+    public static <T> ImmutableCollectionBuilder<T, Set<T>> immutable(final Set<T> set){
+        return new ImmutableCollectionBuilder<T, Set<T>>(new NewableHashSet<T>()).with(set);
     }
 }
