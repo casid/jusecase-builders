@@ -3,10 +3,11 @@ package org.jusecase.builders.newables;
 import org.jusecase.builders.Newable;
 
 import java.util.LinkedList;
+import java.util.List;
 
-public class NewableLinkedList<T> implements Newable<LinkedList<T>> {
+public class NewableLinkedList<T> implements Newable<List<T>> {
     @Override
-    public LinkedList<T> newInstance() {
+    public List<T> newInstance() {
         return new LinkedList<T>();
     }
 }
