@@ -6,7 +6,7 @@ import org.jusecase.builders.Newable;
 
 import java.util.Collection;
 
-import static java.util.Objects.requireNonNull;
+import static org.jusecase.builders.helpers.Preconditions.requireNonNull;
 
 @Immutable
 public class CopyCollectionBuilder<T, TCollectionType extends Collection<T>> implements Builder<TCollectionType> {

@@ -4,14 +4,13 @@ import com.googlecode.zohhak.api.TestWith;
 import com.googlecode.zohhak.api.runners.ZohhakRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.jusecase.builders.ErrorTest;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Optional;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNotSame;
 
 @RunWith(ZohhakRunner.class)
 public class ResourceInputStreamBuilderTest {
@@ -19,13 +18,13 @@ public class ResourceInputStreamBuilderTest {
 
     @Test
     public void testBuildResultIsNotNullAfterConstruction() throws Exception {
-        assertNotNull(builder.build().get());
+        assertNotNull(builder.build());
     }
 
     @Test
     public void testCallingBuildWillReturnACopy() throws Exception {
-        final Optional<InputStream> buildResult = builder.build();
-        assertNotSame(buildResult, builder.build().get());
+        final InputStream buildResult = builder.build();
+        assertNotSame(buildResult, builder.build());
     }
 
     @Test
@@ -38,17 +37,14 @@ public class ResourceInputStreamBuilderTest {
             "testresource.txt",
             ""
     })
-    public void testBuildIsPresent(final String resource) throws Exception {
-        final Optional<InputStream> resourceStream = builder.withResource(resource).build();
-        assertTrue(resourceStream.isPresent());
+    public void testBuildIsNotNull(final String resource) throws Exception {
+        final InputStream resourceStream = builder.withResource(resource).build();
+        assertNotNull(resourceStream);
     }
 
-    @TestWith({
-            "nonexistingresource.txt"
-    })
-    public void testBuildIsNotPresent(final String resource) throws Exception {
-        final Optional<InputStream> resourceStream = builder.withResource(resource).build();
-        assertFalse(resourceStream.isPresent());
+    @Test(expected = NullPointerException.class)
+    public void testThrowNPEWhenResourceIsNotFound() throws Exception {
+        final InputStream resourceStream = builder.withResource("not existing resource").build();
     }
 
     private String toString(final InputStream stream) throws IOException {

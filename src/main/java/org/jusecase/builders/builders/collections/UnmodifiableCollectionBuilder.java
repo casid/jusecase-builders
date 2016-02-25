@@ -7,7 +7,7 @@ import org.jusecase.builders.Newable;
 import java.util.Collection;
 import java.util.Collections;
 
-import static java.util.Objects.requireNonNull;
+import static org.jusecase.builders.helpers.Preconditions.requireNonNull;
 
 @Immutable
 public class UnmodifiableCollectionBuilder<T, TCollectionType extends Collection<T>> implements Builder<Collection<T>> {
