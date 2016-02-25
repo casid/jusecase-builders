@@ -1,4 +1,4 @@
-package org.jusecase.builders.builders.misc;
+package org.jusecase.builders.builders.time;
 
 import org.jusecase.builders.Builder;
 import org.jusecase.builders.Immutable;

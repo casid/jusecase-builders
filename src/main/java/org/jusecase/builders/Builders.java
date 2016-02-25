@@ -1,6 +1,6 @@
 package org.jusecase.builders;
 
-import org.jusecase.builders.builders.misc.DateBuilder;
+import org.jusecase.builders.builders.time.DateBuilder;
 import org.jusecase.builders.builders.streams.InputStreamBuilder;
 
 import java.text.ParseException;
