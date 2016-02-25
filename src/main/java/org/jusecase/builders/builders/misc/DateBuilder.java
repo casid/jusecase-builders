@@ -21,7 +21,11 @@ public class DateBuilder implements Builder<Date> {
     }
 
     public DateBuilder with(String string) throws ParseException {
-        final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return with(string, "yyyy-MM-dd HH:mm:ss");
+    }
+
+    public DateBuilder with(String string, String format) throws ParseException {
+        final SimpleDateFormat dateFormat = new SimpleDateFormat(format);
         dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
         return with(string, dateFormat);
     }

@@ -3,12 +3,12 @@ package org.jusecase.builders;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
-import static org.jusecase.builders.Builders.a;
-import static org.jusecase.builders.Builders.an;
-import static org.jusecase.builders.Builders.of;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
+
+import static org.junit.Assert.*;
+import static org.jusecase.builders.Builders.*;
 
 public class BuildersTest implements Builder<String> {
 
@@ -43,6 +43,24 @@ public class BuildersTest implements Builder<String> {
         final String[] input = new String[]{"input"};
         final String[] output = of(input);
         assertSame(input, output);
+    }
+
+    @Test
+    public void dateIsParsedCorrectly() throws Exception {
+        assertEquals(new Date(1451606401000L), a(date("2016-01-01 00:00:01")));
+    }
+
+    @Test
+    public void dateWithFormatIsParsedCorrectly() throws Exception {
+        assertEquals(new Date(1451606400000L), a(date("2016-01-01", "yyyy-MM-dd")));
+    }
+
+    @Test
+    public void dateWithCustomFormatIsParsedCorrectly() throws Exception {
+        final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+
+        assertEquals(new Date(1451606400000L), a(date("2016-01-01", dateFormat)));
     }
 
     @Override
