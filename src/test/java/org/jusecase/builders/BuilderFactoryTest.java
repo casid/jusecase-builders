@@ -2,9 +2,6 @@ package org.jusecase.builders;
 
 import org.junit.Test;
 import org.jusecase.builders.builders.collections.*;
-import org.jusecase.builders.builders.misc.DateBuilder;
-import org.jusecase.builders.builders.streams.ResourceInputStreamBuilder;
-import org.jusecase.builders.builders.streams.StringInputStreamBuilder;
 import org.jusecase.builders.newables.NewableArrayList;
 
 import static org.junit.Assert.assertNotNull;
@@ -21,9 +18,6 @@ public class BuilderFactoryTest {
         instanceCanBeBuilt(createAggregateCollectionBuilder(new NewableArrayList<Object>()));
         instanceCanBeBuilt(createUnmodifiableCollectionBuilder(new NewableArrayList<Object>()));
         instanceCanBeBuilt(createImmutableCollectionBuilder(new NewableArrayList<Object>()));
-        instanceCanBeBuilt(createResourceInputStreamBuilder());
-        instanceCanBeBuilt(createStringInputStreamBuilder());
-        instanceCanBeBuilt(createDateBuilder());
     }
 
     @Test
@@ -33,9 +27,6 @@ public class BuilderFactoryTest {
         builderEqualsClass(createAggregateCollectionBuilder(new NewableArrayList<Object>()), AggregateCollectionBuilder.class, "createAggregateCollectionBuilder failed");
         builderEqualsClass(createUnmodifiableCollectionBuilder(new NewableArrayList<Object>()), UnmodifiableCollectionBuilder.class, "createUnmodifiableCollectionBuilder failed");
         builderEqualsClass(createImmutableCollectionBuilder(new NewableArrayList<Object>()), ImmutableCollectionBuilder.class, "createImmutableCollectionBuilder failed");
-        builderEqualsClass(createResourceInputStreamBuilder(), ResourceInputStreamBuilder.class, "createResourceInputStreamBuilder failed");
-        builderEqualsClass(createStringInputStreamBuilder(), StringInputStreamBuilder.class, "createStringInputStreamBuilder failed");
-        builderEqualsClass(createDateBuilder(), DateBuilder.class, "createDateBuilder failed");
     }
 
     @Test
@@ -45,9 +36,6 @@ public class BuilderFactoryTest {
         assertNotNull(createAggregateCollectionBuilder(new NewableArrayList<Object>()));
         assertNotNull(createUnmodifiableCollectionBuilder(new NewableArrayList<Object>()));
         assertNotNull(createImmutableCollectionBuilder(new NewableArrayList<Object>()));
-        assertNotNull(createResourceInputStreamBuilder());
-        assertNotNull(createStringInputStreamBuilder());
-        assertNotNull(createDateBuilder());
     }
 
     private <T> void instanceCanBeBuilt(Builder<T> builder) {

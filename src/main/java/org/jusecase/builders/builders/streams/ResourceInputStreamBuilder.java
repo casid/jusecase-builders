@@ -9,23 +9,13 @@ import static org.jusecase.builders.helpers.Preconditions.requireNonNull;
 
 @Immutable
 public class ResourceInputStreamBuilder implements Builder<InputStream> {
-    protected final String resource;
+    private final String resource;
 
-    public ResourceInputStreamBuilder() {
-        this("");
-    }
-
-    protected ResourceInputStreamBuilder(final String resource){
-        this.resource = requireNonNull(resource, "resource may not be null");;
-    }
-
-    public ResourceInputStreamBuilder withResource(String resource) {
-        requireNonNull(resource, "resource may not be null");
-        return new ResourceInputStreamBuilder(resource);
+    public ResourceInputStreamBuilder(final String resource){
+        this.resource = requireNonNull(resource, "resource may not be null");
     }
 
     public InputStream build() {
-        final InputStream result = requireNonNull(Thread.currentThread().getContextClassLoader().getResourceAsStream(resource), "resource not found");
-        return result;
+        return requireNonNull(Thread.currentThread().getContextClassLoader().getResourceAsStream(resource), "resource not found");
     }
 }

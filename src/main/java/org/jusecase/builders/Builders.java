@@ -1,6 +1,7 @@
 package org.jusecase.builders;
 
 import org.jusecase.builders.builders.misc.DateBuilder;
+import org.jusecase.builders.builders.streams.InputStreamBuilder;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -32,5 +33,9 @@ public class Builders {
 
     public static DateBuilder date(final String dateString, final SimpleDateFormat format) throws ParseException {
         return new DateBuilder().with(dateString, format);
+    }
+
+    public static InputStreamBuilder inputStream() {
+        return new InputStreamBuilder();
     }
 }

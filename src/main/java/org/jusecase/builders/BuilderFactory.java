@@ -1,9 +1,6 @@
 package org.jusecase.builders;
 
 import org.jusecase.builders.builders.collections.*;
-import org.jusecase.builders.builders.misc.DateBuilder;
-import org.jusecase.builders.builders.streams.ResourceInputStreamBuilder;
-import org.jusecase.builders.builders.streams.StringInputStreamBuilder;
 
 import java.util.Collection;
 
@@ -27,17 +24,5 @@ public class BuilderFactory {
 
     public static <T, TCollectionType extends Collection<T>> ImmutableCollectionBuilder<T, TCollectionType> createImmutableCollectionBuilder(final Newable<TCollectionType> newable){
         return new ImmutableCollectionBuilder<T, TCollectionType>(newable);
-    }
-
-    public static ResourceInputStreamBuilder createResourceInputStreamBuilder() {
-        return new ResourceInputStreamBuilder();
-    }
-
-    public static StringInputStreamBuilder createStringInputStreamBuilder() {
-        return new StringInputStreamBuilder();
-    }
-
-    public static DateBuilder createDateBuilder() {
-        return new DateBuilder();
     }
 }
