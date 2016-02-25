@@ -1,6 +1,5 @@
 package org.jusecase.builders;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.jusecase.builders.builders.collections.*;
 import org.jusecase.builders.builders.misc.DateBuilder;
@@ -8,16 +7,12 @@ import org.jusecase.builders.builders.streams.ResourceInputStreamBuilder;
 import org.jusecase.builders.builders.streams.StringInputStreamBuilder;
 import org.jusecase.builders.newables.NewableArrayList;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 import static org.jusecase.builders.BuilderFactory.*;
+import static org.jusecase.builders.Builders.a;
 
-public class BuilderFactoryTest implements Builder<String> {
-    private boolean buildHasBeenCalled;
-
-    @Before
-    public void setUp() throws Exception {
-        this.buildHasBeenCalled = false;
-    }
+public class BuilderFactoryTest {
 
     @Test
     public void testInstanceIsNotNull() {
@@ -55,32 +50,6 @@ public class BuilderFactoryTest implements Builder<String> {
         assertNotNull(createDateBuilder());
     }
 
-    @Test
-    public void testAIsCallingBuild() throws Exception {
-        a(this);
-        assertTrue(this.buildHasBeenCalled);
-    }
-
-    @Test
-    public void testAnIsCallingBuild() throws Exception {
-        an(this);
-        assertTrue(this.buildHasBeenCalled);
-    }
-
-    @Test
-    public void testOfReturnsInput() throws Exception {
-        final String input = "input";
-        final String output = of(input);
-        assertEquals(input, output);
-    }
-
-    @Test
-    public void testOfArrayReturnsInput() throws Exception {
-        final String[] input = new String[]{"input"};
-        final String[] output = of(input);
-        assertSame(input, output);
-    }
-
     private <T> void instanceCanBeBuilt(Builder<T> builder) {
         T instance = a(builder);
         assertNotNull(instance);
@@ -88,11 +57,5 @@ public class BuilderFactoryTest implements Builder<String> {
 
     private <T, R> void builderEqualsClass(Builder<T> builder, Class<R> expectedClass, String message) {
         assertTrue(message, expectedClass.isInstance(builder));
-    }
-
-    @Override
-    public String build() {
-        this.buildHasBeenCalled = true;
-        return "";
     }
 }

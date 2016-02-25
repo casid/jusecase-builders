@@ -1,31 +1,13 @@
 package org.jusecase.builders;
 
 import org.jusecase.builders.builders.collections.*;
-import org.jusecase.builders.builders.collections.CollectionBuilder;
 import org.jusecase.builders.builders.misc.DateBuilder;
 import org.jusecase.builders.builders.streams.ResourceInputStreamBuilder;
 import org.jusecase.builders.builders.streams.StringInputStreamBuilder;
-import org.jusecase.builders.newables.NewableArrayList;
 
 import java.util.Collection;
 
 public class BuilderFactory {
-
-    public static <T> T a(final Builder<T> builder) {
-        return builder.build();
-    }
-
-    public static <T> T an(final Builder<T> builder) {
-        return builder.build();
-    }
-
-    public static <T> T of(final T entity) {
-        return entity;
-    }
-
-    public static <T> T[] of(final T... entities) {
-        return entities;
-    }
 
     public static <T, TCollectionType extends Collection<T>> CollectionBuilder<T, TCollectionType> createCollectionBuilder(final Newable<TCollectionType> newable){
         return new CollectionBuilder<T, TCollectionType>(newable);
