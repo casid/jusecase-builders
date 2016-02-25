@@ -11,15 +11,14 @@ public class ArrayBuilder<T> implements Builder<T[]> {
 
     public ArrayBuilder(final T[] array) {
         requireNonNull(array, "array may not be null");
-        this.array = array.clone();
+        this.array = array;
     }
 
-    public ArrayBuilder<T> with(final T... args){
-        requireNonNull(args, "args may not be null");
-        return new ArrayBuilder(args);
+    public ArrayBuilder<T> copy(){
+        return new ArrayBuilder<T>(array.clone());
     }
 
     public T[] build() {
-        return this.array.clone();
+        return this.array;
     }
 }

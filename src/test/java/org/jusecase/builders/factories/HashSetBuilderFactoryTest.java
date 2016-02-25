@@ -8,7 +8,6 @@ import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.jusecase.builders.factories.ArrayBuilderFactory.array;
 import static org.jusecase.builders.factories.HashSetBuilderFactory.*;
 
 public class HashSetBuilderFactoryTest {
@@ -17,7 +16,6 @@ public class HashSetBuilderFactoryTest {
 
     @Test
     public void testNotNull() throws Exception {
-        assertNotNull(array(1,2));
         assertNotNull(set(1,2));
         assertNotNull(copy(set1));
         assertNotNull(aggregate(set1, set2));

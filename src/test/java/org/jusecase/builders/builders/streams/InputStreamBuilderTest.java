@@ -9,7 +9,7 @@ import static org.junit.Assert.assertEquals;
 import static org.jusecase.builders.Builders.a;
 import static org.jusecase.builders.Builders.inputStream;
 
-public class BuildersTest {
+public class InputStreamBuilderTest {
     @Test
     public void inputStreamWithoutAdjustments() throws Exception {
         inputStreamIsEqualTo(a(inputStream()), "");

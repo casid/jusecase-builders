@@ -10,7 +10,7 @@ import static org.junit.Assert.assertEquals;
 import static org.jusecase.builders.Builders.a;
 import static org.jusecase.builders.Builders.date;
 
-public class BuildersTest {
+public class DateBuilderTest {
     @Test
     public void dateIsParsedCorrectly() throws Exception {
         assertEquals(new Date(1451606401000L), a(date("2016-01-01 00:00:01")));

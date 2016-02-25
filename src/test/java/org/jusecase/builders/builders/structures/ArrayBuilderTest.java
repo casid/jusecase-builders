@@ -1,67 +1,30 @@
 package org.jusecase.builders.builders.structures;
 
 import org.junit.Test;
-import org.jusecase.builders.ErrorTest;
-import org.jusecase.builders.Newable;
-import org.jusecase.builders.When;
-import org.jusecase.builders.builders.collections.CopyCollectionBuilder;
-import org.jusecase.builders.newables.NewableArrayList;
-import org.jusecase.builders.newables.NewableCollection;
 
-import java.util.Arrays;
-import java.util.List;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertNotSame;
+import static org.jusecase.builders.Builders.an;
+import static org.jusecase.builders.Builders.array;
 
-import static org.junit.Assert.*;
+public class ArrayBuilderTest {
 
-public class ArrayBuilderTest extends ErrorTest {
-    private final ArrayBuilder<String> builder = new ArrayBuilder<String>(new String[0]);
-    private final String[] array1 = {"1", "2"};
-    private final String[] array2 = {"3", "4", "5"};
-
-    @Test
-    public void testConstructionWithNullParamThrowsNPE() throws Exception {
-        when(new When() {
-            @Override
-            public void isExecuted() {
-                new ArrayBuilder<String>(null);
-            }
-        });
-        thenErrorIs(NullPointerException.class);
+    @Test(expected = NullPointerException.class)
+    public void nullArray() {
+        an(array(null));
     }
 
     @Test
-    public void testBuildResultIsNotNullAfterConstruction() throws Exception {
-        assertNotNull(builder.build());
+    public void filledArray() {
+        assertArrayEquals(new Integer[]{1,2,3,4}, an(array(1, 2, 3, 4)));
     }
 
     @Test
-    public void testBuildResultIsEmptyAfterConstruction() throws Exception {
-        assertTrue(builder.build().length == 0);
-    }
+    public void copy() {
+        String[] original = new String[]{"a", "b", "c"};
+        String[] copy = new ArrayBuilder<String>(original).copy().build();
 
-    @Test
-    public void testCallingBuildWillReturnACopy() throws Exception {
-        final String[] buildResult = builder.build();
-        assertNotSame(buildResult, builder.build());
-    }
-
-    @Test
-    public void testCallingWithReturnNewBuilderInstance() throws Exception {
-        final ArrayBuilder<String> builderCopy = builder.with(array1);
-        assertNotSame(builderCopy, builder);
-    }
-
-    @Test
-    public void testCallingWithWontMutateCurrentInstance() throws Exception {
-        assertEquals(0, builder.build().length);
-        builder.with("1", "2");
-        assertEquals(0, builder.build().length);
-    }
-
-    @Test
-    public void testCallingWithWillNotAggregateBuildResult() throws Exception {
-        final ArrayBuilder<String> builder = this.builder.with(array1);
-        assertEquals(array1.length, builder.build().length);
-        assertEquals(array2.length, builder.with(array2).build().length);
+        assertArrayEquals(original, copy);
+        assertNotSame(original, copy);
     }
 }

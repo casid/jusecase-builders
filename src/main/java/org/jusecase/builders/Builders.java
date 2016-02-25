@@ -1,5 +1,6 @@
 package org.jusecase.builders;
 
+import org.jusecase.builders.builders.structures.ArrayBuilder;
 import org.jusecase.builders.builders.time.DateBuilder;
 import org.jusecase.builders.builders.streams.InputStreamBuilder;
 
@@ -21,6 +22,10 @@ public class Builders {
 
     public static <T> T[] of(final T... entities) {
         return entities;
+    }
+
+    public static <T> ArrayBuilder<T> array(final T ... items) {
+        return new ArrayBuilder<T>(items);
     }
 
     public static DateBuilder date(final String dateString) throws ParseException {
