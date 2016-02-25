@@ -1,6 +1,7 @@
 package org.jusecase.builders;
 
 import org.jusecase.builders.builders.collections.ListBuilder;
+import org.jusecase.builders.builders.collections.SetBuilder;
 import org.jusecase.builders.builders.streams.InputStreamBuilder;
 import org.jusecase.builders.builders.structures.ArrayBuilder;
 import org.jusecase.builders.builders.time.DateBuilder;
@@ -8,6 +9,7 @@ import org.jusecase.builders.builders.time.DateBuilder;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedList;
 
 public class Builders {
@@ -41,6 +43,14 @@ public class Builders {
 
     public static <T> ListBuilder<T> linkedList(final T ... items) {
         return new ListBuilder<T>(new LinkedList<T>(), items);
+    }
+
+    public static <T> SetBuilder<T> set(final T ... items) {
+        return hashSet(items);
+    }
+
+    public static <T> SetBuilder<T> hashSet(final T ... items) {
+        return new SetBuilder<T>(new HashSet<T>(), items);
     }
 
     public static DateBuilder date(final String dateString) throws ParseException {
