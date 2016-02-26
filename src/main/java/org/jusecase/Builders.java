@@ -8,9 +8,7 @@ import org.jusecase.builders.time.DateBuilder;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.LinkedList;
+import java.util.*;
 
 public class Builders {
     private Builders() {
@@ -32,27 +30,27 @@ public class Builders {
         return entities;
     }
 
-    public static <T> ArrayBuilder<T> array(final T ... items) {
+    public static <T> Builder<T[]> array(final T ... items) {
         return new ArrayBuilder<T>(items);
     }
 
-    public static <T> ListBuilder<T> list(final T ... items) {
+    public static <T> Builder<List<T>> list(final T ... items) {
         return arrayList(items);
     }
 
-    public static <T> ListBuilder<T> arrayList(final T ... items) {
+    public static <T> Builder<List<T>> arrayList(final T ... items) {
         return new ListBuilder<T>(new ArrayList<T>(), items);
     }
 
-    public static <T> ListBuilder<T> linkedList(final T ... items) {
+    public static <T> Builder<List<T>> linkedList(final T ... items) {
         return new ListBuilder<T>(new LinkedList<T>(), items);
     }
 
-    public static <T> SetBuilder<T> set(final T ... items) {
+    public static <T> Builder<Set<T>> set(final T ... items) {
         return hashSet(items);
     }
 
-    public static <T> SetBuilder<T> hashSet(final T ... items) {
+    public static <T> Builder<Set<T>> hashSet(final T ... items) {
         return new SetBuilder<T>(new HashSet<T>(), items);
     }
 
