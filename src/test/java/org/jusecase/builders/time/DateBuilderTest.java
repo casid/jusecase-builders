@@ -1,6 +1,7 @@
 package org.jusecase.builders.time;
 
 import org.junit.Test;
+import org.jusecase.BuilderException;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -11,6 +12,11 @@ import static org.jusecase.Builders.a;
 import static org.jusecase.Builders.date;
 
 public class DateBuilderTest {
+    @Test(expected = BuilderException.class)
+    public void dateCannotBeParsed() throws Exception {
+        a(date().with("iedio"));
+    }
+
     @Test
     public void dateIsParsedCorrectly() throws Exception {
         assertEquals(new Date(1451606401000L), a(date().with("2016-01-01 00:00:01")));

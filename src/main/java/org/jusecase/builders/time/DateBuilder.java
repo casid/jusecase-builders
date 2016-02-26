@@ -1,6 +1,7 @@
 package org.jusecase.builders.time;
 
 import org.jusecase.Builder;
+import org.jusecase.BuilderException;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -18,18 +19,22 @@ public class DateBuilder implements Builder<Date> {
         this.date = new Date(date.getTime());
     }
 
-    public DateBuilder with(String string) throws ParseException {
+    public DateBuilder with(String string) {
         return with(string, "yyyy-MM-dd HH:mm:ss");
     }
 
-    public DateBuilder with(String string, String format) throws ParseException {
+    public DateBuilder with(String string, String format) {
         final SimpleDateFormat dateFormat = new SimpleDateFormat(format);
         dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
         return with(string, dateFormat);
     }
 
-    public DateBuilder with(String string, SimpleDateFormat dateFormat) throws ParseException {
-        return new DateBuilder(dateFormat.parse(string));
+    public DateBuilder with(String string, SimpleDateFormat dateFormat) {
+        try {
+            return new DateBuilder(dateFormat.parse(string));
+        } catch (ParseException e) {
+            throw new BuilderException("Failed to parse date from string.", e);
+        }
     }
 
     public Date build() {
