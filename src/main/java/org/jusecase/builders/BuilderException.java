@@ -1,4 +1,4 @@
-package org.jusecase;
+package org.jusecase.builders;
 
 public class BuilderException extends RuntimeException {
     public BuilderException(String message) {

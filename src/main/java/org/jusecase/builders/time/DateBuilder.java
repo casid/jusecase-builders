@@ -1,7 +1,7 @@
 package org.jusecase.builders.time;
 
-import org.jusecase.Builder;
-import org.jusecase.BuilderException;
+import org.jusecase.builders.Builder;
+import org.jusecase.builders.BuilderException;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

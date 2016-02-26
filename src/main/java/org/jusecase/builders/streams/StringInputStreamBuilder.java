@@ -1,6 +1,6 @@
 package org.jusecase.builders.streams;
 
-import org.jusecase.Builder;
+import org.jusecase.builders.Builder;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;

@@ -1,5 +1,6 @@
 package org.jusecase;
 
+import org.jusecase.builders.Builder;
 import org.jusecase.builders.collections.ListBuilder;
 import org.jusecase.builders.collections.SetBuilder;
 import org.jusecase.builders.streams.InputStreamBuilder;

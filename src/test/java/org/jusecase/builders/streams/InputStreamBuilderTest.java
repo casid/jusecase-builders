@@ -2,7 +2,7 @@ package org.jusecase.builders.streams;
 
 import org.apache.commons.io.IOUtils;
 import org.junit.Test;
-import org.jusecase.BuilderException;
+import org.jusecase.builders.BuilderException;
 
 import java.io.InputStream;
 

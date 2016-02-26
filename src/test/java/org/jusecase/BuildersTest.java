@@ -2,6 +2,7 @@ package org.jusecase;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.jusecase.builders.Builder;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Modifier;

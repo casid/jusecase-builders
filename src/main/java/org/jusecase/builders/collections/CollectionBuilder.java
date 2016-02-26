@@ -1,6 +1,6 @@
 package org.jusecase.builders.collections;
 
-import org.jusecase.Builder;
+import org.jusecase.builders.Builder;
 
 import java.util.Collection;
 import java.util.Collections;
