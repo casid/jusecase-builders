@@ -1,6 +1,7 @@
 package org.jusecase.builders.streams;
 
 import org.jusecase.Builder;
+import org.jusecase.BuilderException;
 
 import java.io.InputStream;
 
@@ -17,7 +18,7 @@ public class ResourceInputStreamBuilder implements Builder<InputStream> {
     public InputStream build() {
         InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream(resource);
         if (is == null) {
-            throw new NullPointerException("Resource " + resource + " not found.");
+            throw new BuilderException("Resource " + resource + " not found.");
         }
         return is;
     }

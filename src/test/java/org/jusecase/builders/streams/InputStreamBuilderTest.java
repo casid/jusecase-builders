@@ -2,6 +2,7 @@ package org.jusecase.builders.streams;
 
 import org.apache.commons.io.IOUtils;
 import org.junit.Test;
+import org.jusecase.BuilderException;
 
 import java.io.InputStream;
 
@@ -30,7 +31,7 @@ public class InputStreamBuilderTest {
         a(inputStream().withResource(null));
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test(expected = BuilderException.class)
     public void inputStreamWithResourceThatDoesNotExist() throws Exception {
         a(inputStream().withResource("unknown.txt"));
     }
