@@ -3,6 +3,9 @@ package org.jusecase.builders;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Modifier;
+
 import static org.junit.Assert.*;
 import static org.jusecase.builders.Builders.*;
 
@@ -13,6 +16,14 @@ public class BuildersTest implements Builder<String> {
     @Before
     public void setUp() throws Exception {
         this.buildHasBeenCalled = false;
+    }
+
+    @Test
+    public void constructorIsPrivate() throws Exception {
+        Constructor<Builders> constructor = Builders.class.getDeclaredConstructor();
+        assertTrue(Modifier.isPrivate(constructor.getModifiers()));
+        constructor.setAccessible(true);
+        constructor.newInstance();
     }
 
     @Test

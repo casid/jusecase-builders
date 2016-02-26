@@ -1,10 +1,10 @@
 package org.jusecase.builders;
 
-import org.jusecase.builders.builders.collections.ListBuilder;
-import org.jusecase.builders.builders.collections.SetBuilder;
-import org.jusecase.builders.builders.streams.InputStreamBuilder;
-import org.jusecase.builders.builders.structures.ArrayBuilder;
-import org.jusecase.builders.builders.time.DateBuilder;
+import org.jusecase.builders.collections.ListBuilder;
+import org.jusecase.builders.collections.SetBuilder;
+import org.jusecase.builders.streams.InputStreamBuilder;
+import org.jusecase.builders.structures.ArrayBuilder;
+import org.jusecase.builders.time.DateBuilder;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -13,6 +13,9 @@ import java.util.HashSet;
 import java.util.LinkedList;
 
 public class Builders {
+    private Builders() {
+    }
+
     public static <T> T a(final Builder<T> builder) {
         return builder.build();
     }
