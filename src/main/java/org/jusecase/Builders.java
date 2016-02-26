@@ -6,8 +6,6 @@ import org.jusecase.builders.streams.InputStreamBuilder;
 import org.jusecase.builders.structures.ArrayBuilder;
 import org.jusecase.builders.time.DateBuilder;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class Builders {
@@ -54,16 +52,8 @@ public class Builders {
         return new SetBuilder<T>(new HashSet<T>(), items);
     }
 
-    public static DateBuilder date(final String dateString) throws ParseException {
-        return new DateBuilder().with(dateString);
-    }
-
-    public static DateBuilder date(final String dateString, final String formatString) throws ParseException {
-        return new DateBuilder().with(dateString, formatString);
-    }
-
-    public static DateBuilder date(final String dateString, final SimpleDateFormat format) throws ParseException {
-        return new DateBuilder().with(dateString, format);
+    public static DateBuilder date() {
+        return new DateBuilder();
     }
 
     public static InputStreamBuilder inputStream() {
