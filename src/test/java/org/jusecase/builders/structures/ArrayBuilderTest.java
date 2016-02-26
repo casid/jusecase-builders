@@ -4,8 +4,8 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertNotSame;
-import static org.jusecase.builders.Builders.an;
-import static org.jusecase.builders.Builders.array;
+import static org.jusecase.Builders.an;
+import static org.jusecase.Builders.array;
 
 public class ArrayBuilderTest {
 

@@ -1,6 +1,6 @@
 package org.jusecase.builders.structures;
 
-import org.jusecase.builders.Builder;
+import org.jusecase.Builder;
 
 public class ArrayBuilder<T> implements Builder<T[]> {
     private final T[] array;

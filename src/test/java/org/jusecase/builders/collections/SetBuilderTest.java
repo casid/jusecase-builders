@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
-import static org.jusecase.builders.Builders.*;
+import static org.jusecase.Builders.*;
 
 public class SetBuilderTest {
     @Test

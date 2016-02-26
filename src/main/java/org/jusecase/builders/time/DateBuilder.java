@@ -1,6 +1,6 @@
 package org.jusecase.builders.time;
 
-import org.jusecase.builders.Builder;
+import org.jusecase.Builder;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

@@ -1,4 +1,4 @@
-package org.jusecase.builders;
+package org.jusecase;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -7,7 +7,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Modifier;
 
 import static org.junit.Assert.*;
-import static org.jusecase.builders.Builders.*;
+import static org.jusecase.Builders.*;
 
 public class BuildersTest implements Builder<String> {
 

@@ -6,8 +6,8 @@ import org.junit.Test;
 import java.io.InputStream;
 
 import static org.junit.Assert.assertEquals;
-import static org.jusecase.builders.Builders.a;
-import static org.jusecase.builders.Builders.inputStream;
+import static org.jusecase.Builders.a;
+import static org.jusecase.Builders.inputStream;
 
 public class InputStreamBuilderTest {
     @Test

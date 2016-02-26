@@ -7,8 +7,8 @@ import java.util.Date;
 import java.util.TimeZone;
 
 import static org.junit.Assert.assertEquals;
-import static org.jusecase.builders.Builders.a;
-import static org.jusecase.builders.Builders.date;
+import static org.jusecase.Builders.a;
+import static org.jusecase.Builders.date;
 
 public class DateBuilderTest {
     @Test

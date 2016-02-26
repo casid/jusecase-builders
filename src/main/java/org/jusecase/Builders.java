@@ -1,4 +1,4 @@
-package org.jusecase.builders;
+package org.jusecase;
 
 import org.jusecase.builders.collections.ListBuilder;
 import org.jusecase.builders.collections.SetBuilder;
