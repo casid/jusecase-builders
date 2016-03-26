@@ -23,7 +23,7 @@ public interface Builder<T> {
     T build();
 }
 ```
-Given this contract, we added several ways to wrap the call of `build()` to add fluent syntax sugar like `a()`, `an()` and `of()` that you may find in `Builder` class:
+Given this contract, we added several ways to wrap the call of `build()` to add fluent syntax sugar like `a()`, `an()` and `of()` that you may find in `Builders` class:
 ```java
 public static <T> T a(final Builder<T> builder) {
     return builder.build();
@@ -43,7 +43,7 @@ public static <T> T[] of(final T... entities) {
 ```
 
 ## "Thats neat, but how do I use your builders?"
-Okay okay, one thing after another :) As everything else, the different builders are also published in `Builder` class, so this may be the only class to include to access any kind of builder.
+Okay okay, one thing after another :) As everything else, the different builders are also published in `Builders` class, so this may be the only class to include to access any kind of builder.
 
 Lets pretend you want to build a list out of some values. Instead of writing ..
 ```java
@@ -69,3 +69,99 @@ How about that? Isn't this way better now?
 
 Thanks! We also think that this way of chaining will provide a much better experience, especially for the foreign readers of your code.
 
+**"So this is just about lists?"**
+
+Absolutely not! You can use this for all your entities. We'll get to that soon! The `Builders` class provides convenient access to the following java built-ins:
+```java
+Date myDate = a(date("2020-01-01 00:00:00"));
+Set<String> mySet = a(set("a", "b", "c"));
+List<String> myList = a(list("a", "b", "c"));
+String[] myArray = an(array("a", "b", "c"));
+```
+
+##"You mentioned custom builders before. Why is this a good idea?"
+
+Well, imagine this unit test setup:
+```java
+User admin = new User();
+admin.setName("admin");
+
+List<UserRoles> adminRoles = new ArrayList<>();
+adminRoles.add("read");
+adminRoles.add("write");
+admin.setRoles(adminRoles);
+```
+
+Bloated, isn't it? A lot of code for setting two properties on an entity.
+
+What about if we need the admin user for other tests? What if we need an admin, but with a different name? Without builders, this can lead to a lot of mess in your codebase.
+
+Remember the builder contract? Let's implement it for a `User` entity
+```java
+public class UserBuilder implements Builder<User> {
+    private final User user = new User();
+    
+    public UserBuilder withName(String name) {
+        user.setName(name);
+        return this;
+    }
+    
+    public UserBuilder withRoles(List<String> roles) {
+        user.setRoles(roles);
+        return this;
+    }
+    
+    @Override
+    public User build() {
+        return user;
+    }
+}
+```
+
+And in your project-specific `Builders` class add
+```java
+public static UserBuilder user() {
+    return new UserBuilder();
+}
+```
+
+Now we can refactor the test setup to this
+```java
+User admin = a(user()
+    .withName("admin")
+    .withRoles(a(list("read", "write")))
+);
+```
+
+Much better, isn't it? But there's even more!
+
+**"More? Tell me about it!"**
+
+Yes, exactly! Have you ever heard about object mothers? Object mothers create entities, that are used in a lot of unit tests. Pretty much like personas from UX design.
+
+Let's refactor our test further and put the admin creation to the `UserBuilder`:
+```java
+public UserBuilder admin() {
+    return this
+        .withName("admin")
+        .withRoles(a(list("read", "write")));
+}
+```
+
+Our test setup is now reduced to this
+```java
+User admin = a(user().admin());
+```
+
+Reads a whole lot better, doesn't it?
+
+**"Wait! What if I need to change something about the admin, as you mentioned before?"**
+
+Good that you ask. Well, the admin() object mother still returns a builder, right? So you can do this
+```java
+User admin = a(user().admin().withName("Chuck Norris"));
+```
+
+Now for this specific unit test we have an admin with the name Chuck Norris.
+
+That's it! We believe using builders highly improves the readability and size of unit tests. You should give it a try :-)
