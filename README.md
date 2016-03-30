@@ -42,7 +42,7 @@ public static <T> T[] of(final T... entities) {
 }
 ```
 
-## "Thats neat, but how do I use your builders?"
+## "That's neat, but how do I use your builders?"
 Okay okay, one thing after another :) As everything else, the different builders are also published in `Builders` class, so this may be the only class to include to access any kind of builder.
 
 Lets pretend you want to build a list out of some values. Instead of writing ..
@@ -65,7 +65,7 @@ final List<String> myList = a(list(of("a", "b", "c")));
 ```
 How about that? Isn't this way better now?
 
-**"Yeah your right, thats way better!"**
+**"Yeah you're right, thats way better!"**
 
 Thanks! We also think that this way of chaining will provide a much better experience, especially for the foreign readers of your code.
 
