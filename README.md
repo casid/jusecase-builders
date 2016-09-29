@@ -13,7 +13,7 @@ JUsecase Builders is available on Maven central repository:
 <dependency>
     <groupId>org.jusecase</groupId>
     <artifactId>builders</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.0</version>
 </dependency>
 ```
 
