@@ -63,6 +63,10 @@ public class Builders {
         return new DateBuilder();
     }
 
+    public static DateBuilder date(String string) {
+        return new DateBuilder().with(string);
+    }
+
     public static InputStreamBuilder inputStream() {
         return new InputStreamBuilder();
     }
