@@ -55,6 +55,10 @@ public class Builders {
         return new SetBuilder<T>(new HashSet<T>(), items);
     }
 
+    public static <T> Builder<Set<T>> sortedSet(final T ... items) {
+        return new SetBuilder<T>(new TreeSet<T>(), items);
+    }
+
     public static DateBuilder date() {
         return new DateBuilder();
     }
