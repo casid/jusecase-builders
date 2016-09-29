@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 import static org.junit.Assert.assertEquals;
 import static org.jusecase.Builders.*;
@@ -43,5 +44,10 @@ public class SetBuilderTest {
     @Test
     public void hashSetCanBeBuilt() {
         assertEquals(HashSet.class, a(hashSet()).getClass());
+    }
+
+    @Test
+    public void sortedSetCanBeBuilt() {
+        assertEquals(TreeSet.class, a(sortedSet()).getClass());
     }
 }

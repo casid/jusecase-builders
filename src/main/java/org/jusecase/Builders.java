@@ -2,6 +2,8 @@ package org.jusecase;
 
 import org.jusecase.builders.Builder;
 import org.jusecase.builders.collections.ListBuilder;
+import org.jusecase.builders.collections.MapBuilder;
+import org.jusecase.builders.collections.MapEntryBuilder;
 import org.jusecase.builders.collections.SetBuilder;
 import org.jusecase.builders.streams.InputStreamBuilder;
 import org.jusecase.builders.structures.ArrayBuilder;
@@ -53,11 +55,35 @@ public class Builders {
         return new SetBuilder<T>(new HashSet<T>(), items);
     }
 
+    public static <T> Builder<Set<T>> sortedSet(final T ... items) {
+        return new SetBuilder<T>(new TreeSet<T>(), items);
+    }
+
     public static DateBuilder date() {
         return new DateBuilder();
     }
 
+    public static DateBuilder date(String string) {
+        return new DateBuilder().with(string);
+    }
+
     public static InputStreamBuilder inputStream() {
         return new InputStreamBuilder();
+    }
+
+    public static <K,V> Builder<Map.Entry<K,V>> entry(final K key, final V value) {
+        return new MapEntryBuilder<K, V>(key, value);
+    }
+
+    public static <K,V> Builder<Map<K,V>> map(final Map.Entry<K,V>... entries) {
+        return hashMap(entries);
+    }
+
+    public static <K,V> Builder<Map<K,V>> hashMap(final Map.Entry<K,V>... entries) {
+        return new MapBuilder<K, V>(new HashMap<K, V>(), entries);
+    }
+
+    public static <K,V> Builder<Map<K,V>> linkedHashMap(final Map.Entry<K,V>... entries) {
+        return new MapBuilder<K, V>(new LinkedHashMap<K, V>(), entries);
     }
 }
