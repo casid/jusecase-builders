@@ -6,7 +6,7 @@
 
     <groupId>org.jusecase</groupId>
     <artifactId>builders</artifactId>
-    <version>0.3.0</version>
+    <version>0.3.1</version>
     <packaging>jar</packaging>
 
     <name>JUsecase Builders</name>
@@ -115,6 +115,7 @@
                     </execution>
                 </executions>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
