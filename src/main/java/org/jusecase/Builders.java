@@ -12,8 +12,6 @@ import org.jusecase.builders.time.DateBuilder;
 import java.util.*;
 
 public class Builders {
-    private Builders() {
-    }
 
     public static <T> T a(final Builder<T> builder) {
         return builder.build();

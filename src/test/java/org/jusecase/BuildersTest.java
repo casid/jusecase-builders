@@ -20,14 +20,6 @@ public class BuildersTest implements Builder<String> {
     }
 
     @Test
-    public void constructorIsPrivate() throws Exception {
-        Constructor<Builders> constructor = Builders.class.getDeclaredConstructor();
-        assertTrue(Modifier.isPrivate(constructor.getModifiers()));
-        constructor.setAccessible(true);
-        constructor.newInstance();
-    }
-
-    @Test
     public void testAIsCallingBuild() throws Exception {
         a(this);
         assertTrue(this.buildHasBeenCalled);
