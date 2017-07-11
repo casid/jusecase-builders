@@ -9,8 +9,11 @@ import java.util.Date;
 import java.util.TimeZone;
 
 public class DateBuilder implements Builder<Date> {
+    private static final String DEFAULT_FORMAT_STRING = "yyyy-MM-dd HH:mm:ss";
+    private static final String SHORT_FORMAT_STRING = "yyyy-MM-dd";
+
     private String string = null;
-    private String formatString = "yyyy-MM-dd HH:mm:ss";
+    private String formatString;
     private String timeZone = "UTC";
     private SimpleDateFormat format;
 
@@ -57,6 +60,10 @@ public class DateBuilder implements Builder<Date> {
             return new Date();
         }
 
+        if (formatString == null && string.length() <= SHORT_FORMAT_STRING.length() ) {
+            formatString = SHORT_FORMAT_STRING;
+        }
+
         try {
             return getFormat().parse(string);
         } catch (ParseException e) {
@@ -66,7 +73,7 @@ public class DateBuilder implements Builder<Date> {
 
     private SimpleDateFormat getFormat() {
         if (format == null) {
-            format = new SimpleDateFormat(formatString);
+            format = new SimpleDateFormat(formatString == null ? DEFAULT_FORMAT_STRING : formatString);
             format.setTimeZone(TimeZone.getTimeZone(timeZone));
         }
         return format;
