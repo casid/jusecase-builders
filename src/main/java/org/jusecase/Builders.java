@@ -5,6 +5,7 @@ import org.jusecase.builders.collections.ListBuilder;
 import org.jusecase.builders.collections.MapBuilder;
 import org.jusecase.builders.collections.MapEntryBuilder;
 import org.jusecase.builders.collections.SetBuilder;
+import org.jusecase.builders.io.PathBuilder;
 import org.jusecase.builders.streams.InputStreamBuilder;
 import org.jusecase.builders.structures.ArrayBuilder;
 import org.jusecase.builders.time.DateBuilder;
@@ -25,35 +26,43 @@ public class Builders {
         return entity;
     }
 
+    @SafeVarargs
     public static <T> T[] of(final T... entities) {
         return entities;
     }
 
-    public static <T> Builder<T[]> array(final T ... items) {
+    @SafeVarargs
+    public static <T> Builder<T[]> array(final T... items) {
         return new ArrayBuilder<T>(items);
     }
 
-    public static <T> Builder<List<T>> list(final T ... items) {
+    @SafeVarargs
+    public static <T> Builder<List<T>> list(final T... items) {
         return arrayList(items);
     }
 
-    public static <T> Builder<List<T>> arrayList(final T ... items) {
+    @SafeVarargs
+    public static <T> Builder<List<T>> arrayList(final T... items) {
         return new ListBuilder<T>(new ArrayList<T>(), items);
     }
 
-    public static <T> Builder<List<T>> linkedList(final T ... items) {
+    @SafeVarargs
+    public static <T> Builder<List<T>> linkedList(final T... items) {
         return new ListBuilder<T>(new LinkedList<T>(), items);
     }
 
-    public static <T> Builder<Set<T>> set(final T ... items) {
+    @SafeVarargs
+    public static <T> Builder<Set<T>> set(final T... items) {
         return hashSet(items);
     }
 
-    public static <T> Builder<Set<T>> hashSet(final T ... items) {
+    @SafeVarargs
+    public static <T> Builder<Set<T>> hashSet(final T... items) {
         return new SetBuilder<T>(new HashSet<T>(), items);
     }
 
-    public static <T> Builder<Set<T>> sortedSet(final T ... items) {
+    @SafeVarargs
+    public static <T> Builder<Set<T>> sortedSet(final T... items) {
         return new SetBuilder<T>(new TreeSet<T>(), items);
     }
 
@@ -69,19 +78,26 @@ public class Builders {
         return new InputStreamBuilder();
     }
 
-    public static <K,V> Builder<Map.Entry<K,V>> entry(final K key, final V value) {
+    public static PathBuilder path() {
+        return new PathBuilder();
+    }
+
+    public static <K, V> Builder<Map.Entry<K, V>> entry(final K key, final V value) {
         return new MapEntryBuilder<K, V>(key, value);
     }
 
-    public static <K,V> Builder<Map<K,V>> map(final Map.Entry<K,V>... entries) {
+    @SafeVarargs
+    public static <K, V> Builder<Map<K, V>> map(final Map.Entry<K, V>... entries) {
         return hashMap(entries);
     }
 
-    public static <K,V> Builder<Map<K,V>> hashMap(final Map.Entry<K,V>... entries) {
+    @SafeVarargs
+    public static <K, V> Builder<Map<K, V>> hashMap(final Map.Entry<K, V>... entries) {
         return new MapBuilder<K, V>(new HashMap<K, V>(), entries);
     }
 
-    public static <K,V> Builder<Map<K,V>> linkedHashMap(final Map.Entry<K,V>... entries) {
+    @SafeVarargs
+    public static <K, V> Builder<Map<K, V>> linkedHashMap(final Map.Entry<K, V>... entries) {
         return new MapBuilder<K, V>(new LinkedHashMap<K, V>(), entries);
     }
 }
