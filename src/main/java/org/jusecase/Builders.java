@@ -5,6 +5,7 @@ import org.jusecase.builders.collections.ListBuilder;
 import org.jusecase.builders.collections.MapBuilder;
 import org.jusecase.builders.collections.MapEntryBuilder;
 import org.jusecase.builders.collections.SetBuilder;
+import org.jusecase.builders.io.FileBuilder;
 import org.jusecase.builders.io.PathBuilder;
 import org.jusecase.builders.streams.InputStreamBuilder;
 import org.jusecase.builders.structures.ArrayBuilder;
@@ -80,6 +81,10 @@ public class Builders {
 
     public static PathBuilder path() {
         return new PathBuilder();
+    }
+
+    public static FileBuilder file() {
+        return new FileBuilder();
     }
 
     public static <K, V> Builder<Map.Entry<K, V>> entry(final K key, final V value) {
