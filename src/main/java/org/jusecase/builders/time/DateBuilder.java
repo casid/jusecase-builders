@@ -17,6 +17,15 @@ public class DateBuilder implements Builder<Date> {
     private String timeZone = "UTC";
     private SimpleDateFormat format;
 
+    public DateBuilder() {
+        this.string = "2015-10-21 07:28:00";
+    }
+
+    public DateBuilder now() {
+        this.string = null;
+        return this;
+    }
+
     public DateBuilder with(String string) {
         this.string = string;
         return this;

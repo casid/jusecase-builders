@@ -22,8 +22,13 @@ public class DateBuilderTest {
     }
 
     @Test
+    public void defaultDate() throws Exception {
+        assertEquals(a(date("2015-10-21 07:28:00")), a(date()));
+    }
+
+    @Test
     public void now() throws Exception {
-        assertTrue(new Date().getTime() <= a(date()).getTime());
+        assertTrue(new Date().getTime() <= a(date().now()).getTime());
     }
 
     @Test
