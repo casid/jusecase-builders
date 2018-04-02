@@ -12,7 +12,7 @@ public class DateBuilder implements Builder<Date> {
     private static final String DEFAULT_FORMAT_STRING = "yyyy-MM-dd HH:mm:ss";
     private static final String SHORT_FORMAT_STRING = "yyyy-MM-dd";
 
-    private String string = null;
+    private String string;
     private String formatString;
     private String timeZone = "UTC";
     private SimpleDateFormat format;

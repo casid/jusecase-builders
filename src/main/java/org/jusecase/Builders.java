@@ -10,6 +10,9 @@ import org.jusecase.builders.io.PathBuilder;
 import org.jusecase.builders.streams.InputStreamBuilder;
 import org.jusecase.builders.structures.ArrayBuilder;
 import org.jusecase.builders.time.DateBuilder;
+import org.jusecase.builders.time.LocalDateBuilder;
+import org.jusecase.builders.time.LocalDateTimeBuilder;
+import org.jusecase.builders.time.ZonedDateTimeBuilder;
 
 import java.util.*;
 
@@ -73,6 +76,30 @@ public class Builders {
 
     public static DateBuilder date(String string) {
         return new DateBuilder().with(string);
+    }
+
+    public static LocalDateBuilder localDate() {
+        return new LocalDateBuilder();
+    }
+
+    public static LocalDateBuilder localDate(String string) {
+        return new LocalDateBuilder(string);
+    }
+
+    public static LocalDateTimeBuilder localDateTime() {
+        return new LocalDateTimeBuilder();
+    }
+
+    public static LocalDateTimeBuilder localDateTime(String string) {
+        return new LocalDateTimeBuilder(string);
+    }
+
+    public static ZonedDateTimeBuilder zonedDateTime() {
+        return new ZonedDateTimeBuilder();
+    }
+
+    public static ZonedDateTimeBuilder zonedDateTime(String string) {
+        return new ZonedDateTimeBuilder(string);
     }
 
     public static InputStreamBuilder inputStream() {
