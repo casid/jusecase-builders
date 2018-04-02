@@ -88,7 +88,7 @@ public class Builders {
     }
 
     public static <K, V> Builder<Map.Entry<K, V>> entry(final K key, final V value) {
-        return new MapEntryBuilder<K, V>(key, value);
+        return new MapEntryBuilder<>(key, value);
     }
 
     @SafeVarargs
@@ -98,11 +98,11 @@ public class Builders {
 
     @SafeVarargs
     public static <K, V> Builder<Map<K, V>> hashMap(final Map.Entry<K, V>... entries) {
-        return new MapBuilder<K, V>(new HashMap<K, V>(), entries);
+        return new MapBuilder<>(new HashMap<K, V>(), entries);
     }
 
     @SafeVarargs
     public static <K, V> Builder<Map<K, V>> linkedHashMap(final Map.Entry<K, V>... entries) {
-        return new MapBuilder<K, V>(new LinkedHashMap<K, V>(), entries);
+        return new MapBuilder<>(new LinkedHashMap<K, V>(), entries);
     }
 }
