@@ -23,7 +23,7 @@ public class LocalDateTimeBuilderTest {
     }
 
     @Test
-    public void dateIsParsedCorrectly() {
+    public void dateTimeIsParsedCorrectly() {
         LocalDateTime dateTime = a(localDateTime("2016-01-01 08:30:40"));
         assertEquals(dateTime.getYear(), 2016);
         assertEquals(dateTime.getMonthValue(), 1);
@@ -31,5 +31,16 @@ public class LocalDateTimeBuilderTest {
         assertEquals(dateTime.getHour(), 8);
         assertEquals(dateTime.getMinute(), 30);
         assertEquals(dateTime.getSecond(), 40);
+    }
+
+    @Test
+    public void shortDateTimeIsParsedCorrectly() {
+        LocalDateTime dateTime = a(localDateTime("2016-01-01"));
+        assertEquals(dateTime.getYear(), 2016);
+        assertEquals(dateTime.getMonthValue(), 1);
+        assertEquals(dateTime.getDayOfMonth(), 1);
+        assertEquals(dateTime.getHour(), 0);
+        assertEquals(dateTime.getMinute(), 0);
+        assertEquals(dateTime.getSecond(), 0);
     }
 }
