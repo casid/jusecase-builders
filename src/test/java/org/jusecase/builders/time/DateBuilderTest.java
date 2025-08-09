@@ -1,14 +1,14 @@
 package org.jusecase.builders.time;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.jusecase.builders.BuilderException;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.jusecase.Builders.a;
 import static org.jusecase.Builders.date;
 
@@ -16,49 +16,49 @@ public class DateBuilderTest {
 
     private static final long CET_DIFFERENCE = 3600 * 1000;
 
-    @Test(expected = BuilderException.class)
+    @Test
     public void dateCannotBeParsed() {
-        a(date().with("iedio"));
+        assertThrows(BuilderException.class, () -> a(date().with("iedio")));
     }
 
     @Test
     public void defaultDate() {
-        assertEquals(a(date("2015-10-21 07:28:00")), a(date()));
+        assertThat(a(date())).isEqualTo(a(date("2015-10-21 07:28:00")));
     }
 
     @Test
     public void now() {
-        assertTrue(new Date().getTime() <= a(date().now()).getTime());
+        assertThat(new Date().getTime() <= a(date().now()).getTime()).isTrue();
     }
 
     @Test
     public void dateWithExplicitWith() {
-        assertEquals(new Date(1451606401000L), a(date().with("2016-01-01 00:00:01")));
+        assertThat(a(date().with("2016-01-01 00:00:01"))).isEqualTo(new Date(1451606401000L));
     }
 
     @Test
     public void dateIsParsedCorrectly() {
-        assertEquals(new Date(1451606401000L), a(date("2016-01-01 00:00:01")));
+        assertThat(a(date("2016-01-01 00:00:01"))).isEqualTo(new Date(1451606401000L));
     }
 
     @Test
     public void dateIsParsedCorrectly_onlyDatePart() {
-        assertEquals(new Date(1451606400000L), a(date("2016-01-01")));
+        assertThat(a(date("2016-01-01"))).isEqualTo(new Date(1451606400000L));
     }
 
     @Test
     public void dateWithFormatIsParsedCorrectly() {
-        assertEquals(new Date(1451606400000L), a(date("2016-01-01").withFormat("yyyy-MM-dd")));
+        assertThat(a(date("2016-01-01").withFormat("yyyy-MM-dd"))).isEqualTo(new Date(1451606400000L));
     }
 
     @Test
     public void dateWithFormatIsParsedCorrectly_legacyWay() {
-        assertEquals(new Date(1451606400000L), a(date().with("2016-01-01", "yyyy-MM-dd")));
+        assertThat(a(date().with("2016-01-01", "yyyy-MM-dd"))).isEqualTo(new Date(1451606400000L));
     }
 
     @Test
     public void dateWithTimezoneIsParsedCorrectly() {
-        assertEquals(new Date(1451606401000L - CET_DIFFERENCE), a(date("2016-01-01 00:00:01").withTimezone("CET")));
+        assertThat(a(date("2016-01-01 00:00:01").withTimezone("CET"))).isEqualTo(new Date(1451606401000L - CET_DIFFERENCE));
     }
 
     @Test
@@ -66,7 +66,7 @@ public class DateBuilderTest {
         final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         dateFormat.setTimeZone(TimeZone.getTimeZone("CET"));
 
-        assertEquals(new Date(1451606400000L - CET_DIFFERENCE), a(date("2016-01-01").withFormat(dateFormat)));
+        assertThat(a(date("2016-01-01").withFormat(dateFormat))).isEqualTo(new Date(1451606400000L - CET_DIFFERENCE));
     }
 
     @Test
@@ -74,6 +74,6 @@ public class DateBuilderTest {
         final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         dateFormat.setTimeZone(TimeZone.getTimeZone("CET"));
 
-        assertEquals(new Date(1451606400000L - CET_DIFFERENCE), a(date().with("2016-01-01", dateFormat)));
+        assertThat(a(date().with("2016-01-01", dateFormat))).isEqualTo(new Date(1451606400000L - CET_DIFFERENCE));
     }
 }

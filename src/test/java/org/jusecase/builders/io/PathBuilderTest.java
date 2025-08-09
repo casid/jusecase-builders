@@ -1,35 +1,36 @@
 package org.jusecase.builders.io;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.jusecase.builders.BuilderException;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import static org.junit.Assert.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.jusecase.Builders.a;
 import static org.jusecase.Builders.path;
 
 public class PathBuilderTest {
     @Test
     public void defaultPath() {
-        assertEquals(Paths.get(""), a(path()));
+        assertThat(a(path())).isEqualTo(Paths.get(""));
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void nullResource() {
-        a(path().withResource(null));
+        assertThrows(NullPointerException.class, () -> a(path().withResource(null)));
     }
 
-    @Test(expected = BuilderException.class)
+    @Test
     public void resourceThatDoesNotExist() {
-        a(path().withResource("unknown.txt"));
+        assertThrows(BuilderException.class, () -> a(path().withResource("unknown.txt")));
     }
 
     @Test
     public void resourceThatExists() throws Exception {
         Path path = a(path().withResource("testresource.txt"));
-        assertEquals("this is a test", new String(Files.readAllBytes(path)));
+        assertThat(new String(Files.readAllBytes(path))).isEqualTo("this is a test");
     }
 }
