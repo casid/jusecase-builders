@@ -1,6 +1,5 @@
 package org.jusecase.builders.streams;
 
-import org.apache.commons.io.IOUtils;
 import org.junit.Test;
 import org.jusecase.builders.BuilderException;
 
@@ -42,6 +41,6 @@ public class InputStreamBuilderTest {
     }
 
     private void inputStreamIsEqualTo(InputStream inputStream, String expected) throws Exception {
-        assertEquals(expected, IOUtils.toString(inputStream));
+        assertEquals(expected, new String(inputStream.readAllBytes()));
     }
 }
