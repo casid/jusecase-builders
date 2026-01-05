@@ -1,10 +1,11 @@
 package org.jusecase.builders.streams;
 
-import org.jusecase.builders.Builder;
-
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+
+import org.jusecase.builders.Builder;
+
 
 public class StringInputStreamBuilder implements Builder<InputStream> {
     private final String content;
@@ -22,7 +23,7 @@ public class StringInputStreamBuilder implements Builder<InputStream> {
 
     @Override
     public InputStream build() {
-        final byte[] stringAsBytes = content.getBytes(Charset.forName("UTF-8"));
+        final byte[] stringAsBytes = content.getBytes(StandardCharsets.UTF_8);
         return new ByteArrayInputStream(stringAsBytes);
     }
 }

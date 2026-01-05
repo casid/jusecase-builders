@@ -1,15 +1,14 @@
 package org.jusecase.builders.time;
 
-import org.jusecase.Builders;
-import org.jusecase.builders.Builder;
-import org.jusecase.builders.BuilderException;
+import static org.jusecase.Builders.a;
+import static org.jusecase.Builders.localDate;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import static org.jusecase.Builders.a;
-import static org.jusecase.Builders.localDate;
+import org.jusecase.builders.Builder;
+import org.jusecase.builders.BuilderException;
 
 public class LocalDateTimeBuilder implements Builder<LocalDateTime> {
 
@@ -18,7 +17,7 @@ public class LocalDateTimeBuilder implements Builder<LocalDateTime> {
 
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern(FORMAT);
 
-    private String string;
+    private final String string;
 
     public LocalDateTimeBuilder() {
         this("2015-10-21 07:28:00");

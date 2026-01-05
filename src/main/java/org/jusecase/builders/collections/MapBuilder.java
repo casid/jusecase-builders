@@ -1,8 +1,8 @@
 package org.jusecase.builders.collections;
 
-import org.jusecase.builders.Builder;
-
 import java.util.Map;
+
+import org.jusecase.builders.Builder;
 
 public class MapBuilder<K,V> implements Builder<Map<K,V>> {
     private final Map<K,V> map;

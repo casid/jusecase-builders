@@ -1,12 +1,12 @@
 package org.jusecase.builders.io;
 
-import org.jusecase.builders.Builder;
-import org.jusecase.builders.BuilderException;
-
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
+import org.jusecase.builders.Builder;
+import org.jusecase.builders.BuilderException;
 
 public class PathBuilder implements Builder<Path> {
     private String resource;

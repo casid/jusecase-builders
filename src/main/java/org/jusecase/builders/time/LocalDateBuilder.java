@@ -1,13 +1,13 @@
 package org.jusecase.builders.time;
 
+import java.time.LocalDate;
+
 import org.jusecase.builders.Builder;
 import org.jusecase.builders.BuilderException;
 
-import java.time.LocalDate;
-
 public class LocalDateBuilder implements Builder<LocalDate> {
 
-    private String string;
+    private final String string;
 
     public LocalDateBuilder() {
         this("2015-10-21");

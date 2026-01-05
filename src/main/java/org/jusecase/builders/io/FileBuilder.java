@@ -1,11 +1,11 @@
 package org.jusecase.builders.io;
 
-import org.jusecase.builders.Builder;
-import org.jusecase.builders.BuilderException;
-
 import java.io.File;
 import java.net.URISyntaxException;
 import java.net.URL;
+
+import org.jusecase.builders.Builder;
+import org.jusecase.builders.BuilderException;
 
 public class FileBuilder implements Builder<File> {
     private String resource;

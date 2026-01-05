@@ -1,12 +1,12 @@
 package org.jusecase.builders.time;
 
-import org.jusecase.builders.Builder;
-import org.jusecase.builders.BuilderException;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
+
+import org.jusecase.builders.Builder;
+import org.jusecase.builders.BuilderException;
 
 public class DateBuilder implements Builder<Date> {
     private static final String DEFAULT_FORMAT_STRING = "yyyy-MM-dd HH:mm:ss";

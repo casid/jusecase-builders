@@ -1,15 +1,15 @@
 package org.jusecase.builders.io;
 
-import org.junit.jupiter.api.Test;
-import org.jusecase.builders.BuilderException;
-
-import java.io.File;
-import java.nio.file.Files;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.jusecase.Builders.a;
 import static org.jusecase.Builders.file;
+
+import java.io.File;
+import java.nio.file.Files;
+
+import org.junit.jupiter.api.Test;
+import org.jusecase.builders.BuilderException;
 
 public class FileBuilderTest {
     @Test

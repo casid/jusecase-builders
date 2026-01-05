@@ -1,5 +1,15 @@
 package org.jusecase;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
+
 import org.jusecase.builders.Builder;
 import org.jusecase.builders.collections.ListBuilder;
 import org.jusecase.builders.collections.MapBuilder;
@@ -13,8 +23,6 @@ import org.jusecase.builders.time.DateBuilder;
 import org.jusecase.builders.time.LocalDateBuilder;
 import org.jusecase.builders.time.LocalDateTimeBuilder;
 import org.jusecase.builders.time.ZonedDateTimeBuilder;
-
-import java.util.*;
 
 public class Builders {
 

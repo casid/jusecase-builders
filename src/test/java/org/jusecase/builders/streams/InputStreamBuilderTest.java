@@ -1,14 +1,14 @@
 package org.jusecase.builders.streams;
 
-import org.junit.jupiter.api.Test;
-import org.jusecase.builders.BuilderException;
-
-import java.io.InputStream;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.jusecase.Builders.a;
 import static org.jusecase.Builders.inputStream;
+
+import java.io.InputStream;
+
+import org.junit.jupiter.api.Test;
+import org.jusecase.builders.BuilderException;
 
 public class InputStreamBuilderTest {
     @Test
@@ -17,7 +17,7 @@ public class InputStreamBuilderTest {
     }
 
     @Test
-    public void inputStreamWithNullString() throws Exception {
+    public void inputStreamWithNullString() {
         assertThrows(NullPointerException.class, () -> a(inputStream().withString(null)));
     }
 
@@ -27,12 +27,12 @@ public class InputStreamBuilderTest {
     }
 
     @Test
-    public void inputStreamWithNullResource() throws Exception {
+    public void inputStreamWithNullResource() {
         assertThrows(NullPointerException.class, () -> a(inputStream().withResource(null)));
     }
 
     @Test
-    public void inputStreamWithResourceThatDoesNotExist() throws Exception {
+    public void inputStreamWithResourceThatDoesNotExist() {
         assertThrows(BuilderException.class, () -> a(inputStream().withResource("unknown.txt")));
     }
 

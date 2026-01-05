@@ -1,16 +1,16 @@
 package org.jusecase.builders.time;
 
-import org.junit.jupiter.api.Test;
-import org.jusecase.builders.BuilderException;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.jusecase.Builders.a;
+import static org.jusecase.Builders.date;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.jusecase.Builders.a;
-import static org.jusecase.Builders.date;
+import org.junit.jupiter.api.Test;
+import org.jusecase.builders.BuilderException;
 
 public class DateBuilderTest {
 
