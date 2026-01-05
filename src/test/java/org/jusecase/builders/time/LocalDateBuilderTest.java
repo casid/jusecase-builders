@@ -1,36 +1,37 @@
 package org.jusecase.builders.time;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.jusecase.builders.BuilderException;
 
 import java.time.LocalDate;
 
-import static org.junit.Assert.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.jusecase.Builders.a;
 import static org.jusecase.Builders.localDate;
 
 public class LocalDateBuilderTest {
 
-    @Test(expected = BuilderException.class)
+    @Test
     public void dateCannotBeParsed() {
-        a(localDate("iedio"));
+        assertThrows(BuilderException.class, () -> a(localDate("iedio")));
     }
 
-    @Test(expected = BuilderException.class)
+    @Test
     public void timeCannotBeParsed() {
-        a(localDate("2016-01-01 00:00:01"));
+        assertThrows(BuilderException.class, () -> a(localDate("2016-01-01 00:00:01")));
     }
 
     @Test
     public void defaultDate() {
-        assertEquals(a(localDate("2015-10-21")), a(localDate()));
+        assertThat(a(localDate())).isEqualTo(a(localDate("2015-10-21")));
     }
 
     @Test
     public void dateIsParsedCorrectly() {
         LocalDate date = a(localDate("2016-01-01"));
-        assertEquals(date.getYear(), 2016);
-        assertEquals(date.getMonthValue(), 1);
-        assertEquals(date.getDayOfMonth(), 1);
+        assertThat(2016).isEqualTo(date.getYear());
+        assertThat(1).isEqualTo(date.getMonthValue());
+        assertThat(1).isEqualTo(date.getDayOfMonth());
     }
 }

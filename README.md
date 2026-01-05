@@ -1,7 +1,5 @@
 # JUsecase Builders
 
-[![Build Status](https://travis-ci.org/casid/jusecase-builders.svg?branch=master)](https://travis-ci.org/casid/jusecase-builders)
-[![Coverage Status](https://coveralls.io/repos/github/casid/jusecase-builders/badge.svg?branch=master)](https://coveralls.io/github/casid/jusecase-builders?branch=master)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://raw.githubusercontent.com/casid/jusecase-builders/master/LICENSE)
 [![Maven Central](https://img.shields.io/maven-central/v/org.jusecase/builders.svg)](http://mvnrepository.com/artifact/org.jusecase/builders)
 

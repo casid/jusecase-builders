@@ -1,12 +1,12 @@
 package org.jusecase.builders.streams;
 
-import org.apache.commons.io.IOUtils;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.jusecase.builders.BuilderException;
 
 import java.io.InputStream;
 
-import static org.junit.Assert.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.jusecase.Builders.a;
 import static org.jusecase.Builders.inputStream;
 
@@ -16,9 +16,9 @@ public class InputStreamBuilderTest {
         inputStreamIsEqualTo(a(inputStream()), "");
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void inputStreamWithNullString() throws Exception {
-        a(inputStream().withString(null));
+        assertThrows(NullPointerException.class, () -> a(inputStream().withString(null)));
     }
 
     @Test
@@ -26,14 +26,14 @@ public class InputStreamBuilderTest {
         inputStreamIsEqualTo(a(inputStream().withString("1234")), "1234");
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void inputStreamWithNullResource() throws Exception {
-        a(inputStream().withResource(null));
+        assertThrows(NullPointerException.class, () -> a(inputStream().withResource(null)));
     }
 
-    @Test(expected = BuilderException.class)
+    @Test
     public void inputStreamWithResourceThatDoesNotExist() throws Exception {
-        a(inputStream().withResource("unknown.txt"));
+        assertThrows(BuilderException.class, () -> a(inputStream().withResource("unknown.txt")));
     }
 
     @Test
@@ -42,6 +42,6 @@ public class InputStreamBuilderTest {
     }
 
     private void inputStreamIsEqualTo(InputStream inputStream, String expected) throws Exception {
-        assertEquals(expected, IOUtils.toString(inputStream));
+        assertThat(new String(inputStream.readAllBytes())).isEqualTo(expected);
     }
 }

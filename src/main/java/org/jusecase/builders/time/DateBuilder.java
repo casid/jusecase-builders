@@ -49,7 +49,7 @@ public class DateBuilder implements Builder<Date> {
     }
 
     /**
-     * Use withFormat() instead
+     * @deprecated Use {@link #withFormat(String)} instead
      */
     @Deprecated
     public DateBuilder with(String string, String format) {
@@ -57,7 +57,7 @@ public class DateBuilder implements Builder<Date> {
     }
 
     /**
-     * Use withFormat() instead
+     * @deprecated Use {@link #withFormat(SimpleDateFormat)} instead
      */
     @Deprecated
     public DateBuilder with(String string, SimpleDateFormat format) {
@@ -69,7 +69,7 @@ public class DateBuilder implements Builder<Date> {
             return new Date();
         }
 
-        if (formatString == null && string.length() <= SHORT_FORMAT_STRING.length() ) {
+        if (formatString == null && string.length() <= SHORT_FORMAT_STRING.length()) {
             formatString = SHORT_FORMAT_STRING;
         }
 
