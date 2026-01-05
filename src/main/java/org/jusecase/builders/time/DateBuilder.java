@@ -1,12 +1,12 @@
 package org.jusecase.builders.time;
 
-import org.jusecase.builders.Builder;
-import org.jusecase.builders.BuilderException;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
+
+import org.jusecase.builders.Builder;
+import org.jusecase.builders.BuilderException;
 
 public class DateBuilder implements Builder<Date> {
     private static final String DEFAULT_FORMAT_STRING = "yyyy-MM-dd HH:mm:ss";
@@ -46,22 +46,6 @@ public class DateBuilder implements Builder<Date> {
     public DateBuilder withTimezone(String timeZone) {
         this.timeZone = timeZone;
         return this;
-    }
-
-    /**
-     * @deprecated Use {@link #withFormat(String)} instead
-     */
-    @Deprecated
-    public DateBuilder with(String string, String format) {
-        return this.with(string).withFormat(format);
-    }
-
-    /**
-     * @deprecated Use {@link #withFormat(SimpleDateFormat)} instead
-     */
-    @Deprecated
-    public DateBuilder with(String string, SimpleDateFormat format) {
-        return this.with(string).withFormat(format);
     }
 
     public Date build() {

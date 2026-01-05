@@ -13,13 +13,13 @@ jobs:
       matrix:
         include:
           - operating-system: 'ubuntu-latest'
-            java-version: '11'
-
-          - operating-system: 'ubuntu-latest'
             java-version: '17'
 
           - operating-system: 'ubuntu-latest'
             java-version: '21'
+
+          - operating-system: 'ubuntu-latest'
+            java-version: '25'
 
     name: Java ${{ matrix.java-version }}
     runs-on: ${{ matrix.operating-system }}

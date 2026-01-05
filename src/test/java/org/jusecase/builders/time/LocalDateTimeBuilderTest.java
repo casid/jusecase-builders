@@ -1,14 +1,14 @@
 package org.jusecase.builders.time;
 
-import org.junit.jupiter.api.Test;
-import org.jusecase.builders.BuilderException;
-
-import java.time.LocalDateTime;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.jusecase.Builders.a;
 import static org.jusecase.Builders.localDateTime;
+
+import java.time.LocalDateTime;
+
+import org.junit.jupiter.api.Test;
+import org.jusecase.builders.BuilderException;
 
 public class LocalDateTimeBuilderTest {
 

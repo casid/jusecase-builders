@@ -1,16 +1,16 @@
 package org.jusecase.builders.io;
 
-import org.junit.jupiter.api.Test;
-import org.jusecase.builders.BuilderException;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.jusecase.Builders.a;
+import static org.jusecase.Builders.path;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.jusecase.Builders.a;
-import static org.jusecase.Builders.path;
+import org.junit.jupiter.api.Test;
+import org.jusecase.builders.BuilderException;
 
 public class PathBuilderTest {
     @Test

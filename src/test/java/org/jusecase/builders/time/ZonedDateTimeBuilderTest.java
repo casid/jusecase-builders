@@ -1,14 +1,14 @@
 package org.jusecase.builders.time;
 
-import org.junit.jupiter.api.Test;
-import org.jusecase.builders.BuilderException;
-
-import java.time.ZonedDateTime;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.jusecase.Builders.a;
 import static org.jusecase.Builders.zonedDateTime;
+
+import java.time.ZonedDateTime;
+
+import org.junit.jupiter.api.Test;
+import org.jusecase.builders.BuilderException;
 
 public class ZonedDateTimeBuilderTest {
 

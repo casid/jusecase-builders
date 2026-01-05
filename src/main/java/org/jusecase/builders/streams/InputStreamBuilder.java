@@ -1,8 +1,8 @@
 package org.jusecase.builders.streams;
 
-import org.jusecase.builders.Builder;
-
 import java.io.InputStream;
+
+import org.jusecase.builders.Builder;
 
 public class InputStreamBuilder implements Builder<InputStream> {
 

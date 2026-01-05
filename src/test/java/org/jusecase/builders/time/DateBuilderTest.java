@@ -1,16 +1,16 @@
 package org.jusecase.builders.time;
 
-import org.junit.jupiter.api.Test;
-import org.jusecase.builders.BuilderException;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.jusecase.Builders.a;
+import static org.jusecase.Builders.date;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.jusecase.Builders.a;
-import static org.jusecase.Builders.date;
+import org.junit.jupiter.api.Test;
+import org.jusecase.builders.BuilderException;
 
 public class DateBuilderTest {
 
@@ -52,11 +52,6 @@ public class DateBuilderTest {
     }
 
     @Test
-    public void dateWithFormatIsParsedCorrectly_legacyWay() {
-        assertThat(a(date().with("2016-01-01", "yyyy-MM-dd"))).isEqualTo(new Date(1451606400000L));
-    }
-
-    @Test
     public void dateWithTimezoneIsParsedCorrectly() {
         assertThat(a(date("2016-01-01 00:00:01").withTimezone("CET"))).isEqualTo(new Date(1451606401000L - CET_DIFFERENCE));
     }
@@ -67,13 +62,5 @@ public class DateBuilderTest {
         dateFormat.setTimeZone(TimeZone.getTimeZone("CET"));
 
         assertThat(a(date("2016-01-01").withFormat(dateFormat))).isEqualTo(new Date(1451606400000L - CET_DIFFERENCE));
-    }
-
-    @Test
-    public void dateWithCustomFormatIsParsedCorrectly_legacyWay() {
-        final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        dateFormat.setTimeZone(TimeZone.getTimeZone("CET"));
-
-        assertThat(a(date().with("2016-01-01", dateFormat))).isEqualTo(new Date(1451606400000L - CET_DIFFERENCE));
     }
 }

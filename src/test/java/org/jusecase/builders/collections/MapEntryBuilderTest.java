@@ -1,12 +1,12 @@
 package org.jusecase.builders.collections;
 
-import org.junit.jupiter.api.Test;
-
-import java.util.Map;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.jusecase.Builders.an;
 import static org.jusecase.Builders.entry;
+
+import java.util.Map;
+
+import org.junit.jupiter.api.Test;
 
 public class MapEntryBuilderTest {
     @Test

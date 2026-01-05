@@ -1,13 +1,16 @@
 package org.jusecase.builders.collections;
 
-import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.jusecase.Builders.a;
+import static org.jusecase.Builders.arrayList;
+import static org.jusecase.Builders.linkedList;
+import static org.jusecase.Builders.list;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.jusecase.Builders.*;
+import org.junit.jupiter.api.Test;
 
 public class ListBuilderTest {
     @Test
@@ -17,12 +20,7 @@ public class ListBuilderTest {
 
     @Test
     public void filledList() {
-        List<String> expected = new ArrayList<String>();
-        expected.add("a");
-        expected.add("b");
-        expected.add("c");
-
-        assertThat(a(list("a", "b", "c"))).isEqualTo(expected);
+        assertThat(a(list("a", "b", "c"))).isEqualTo(List.of("a", "b", "c"));
     }
 
     @Test

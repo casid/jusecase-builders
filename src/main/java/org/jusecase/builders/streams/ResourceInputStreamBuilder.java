@@ -1,9 +1,9 @@
 package org.jusecase.builders.streams;
 
+import java.io.InputStream;
+
 import org.jusecase.builders.Builder;
 import org.jusecase.builders.BuilderException;
-
-import java.io.InputStream;
 
 public class ResourceInputStreamBuilder implements Builder<InputStream> {
     private final String resource;

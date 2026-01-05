@@ -1,9 +1,9 @@
 package org.jusecase.builders.collections;
 
-import org.jusecase.builders.Builder;
-
 import java.util.Collection;
 import java.util.Collections;
+
+import org.jusecase.builders.Builder;
 
 public class CollectionBuilder<T, CollectionType extends Collection<T>> implements Builder<CollectionType> {
     private final CollectionType collection;

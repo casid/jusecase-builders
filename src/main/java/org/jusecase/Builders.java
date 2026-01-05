@@ -1,5 +1,15 @@
 package org.jusecase;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
+
 import org.jusecase.builders.Builder;
 import org.jusecase.builders.collections.ListBuilder;
 import org.jusecase.builders.collections.MapBuilder;
@@ -13,8 +23,6 @@ import org.jusecase.builders.time.DateBuilder;
 import org.jusecase.builders.time.LocalDateBuilder;
 import org.jusecase.builders.time.LocalDateTimeBuilder;
 import org.jusecase.builders.time.ZonedDateTimeBuilder;
-
-import java.util.*;
 
 public class Builders {
 
@@ -37,7 +45,7 @@ public class Builders {
 
     @SafeVarargs
     public static <T> Builder<T[]> array(final T... items) {
-        return new ArrayBuilder<T>(items);
+        return new ArrayBuilder<>(items);
     }
 
     @SafeVarargs
@@ -47,12 +55,12 @@ public class Builders {
 
     @SafeVarargs
     public static <T> Builder<List<T>> arrayList(final T... items) {
-        return new ListBuilder<T>(new ArrayList<T>(), items);
+        return new ListBuilder<>(new ArrayList<>(), items);
     }
 
     @SafeVarargs
     public static <T> Builder<List<T>> linkedList(final T... items) {
-        return new ListBuilder<T>(new LinkedList<T>(), items);
+        return new ListBuilder<>(new LinkedList<>(), items);
     }
 
     @SafeVarargs
@@ -62,12 +70,12 @@ public class Builders {
 
     @SafeVarargs
     public static <T> Builder<Set<T>> hashSet(final T... items) {
-        return new SetBuilder<T>(new HashSet<T>(), items);
+        return new SetBuilder<>(new HashSet<>(), items);
     }
 
     @SafeVarargs
-    public static <T> Builder<Set<T>> sortedSet(final T... items) {
-        return new SetBuilder<T>(new TreeSet<T>(), items);
+    public static <T extends Comparable<?>> Builder<Set<T>> sortedSet(final T... items) {
+        return new SetBuilder<>(new TreeSet<>(), items);
     }
 
     public static DateBuilder date() {
@@ -125,11 +133,11 @@ public class Builders {
 
     @SafeVarargs
     public static <K, V> Builder<Map<K, V>> hashMap(final Map.Entry<K, V>... entries) {
-        return new MapBuilder<>(new HashMap<K, V>(), entries);
+        return new MapBuilder<>(new HashMap<>(), entries);
     }
 
     @SafeVarargs
     public static <K, V> Builder<Map<K, V>> linkedHashMap(final Map.Entry<K, V>... entries) {
-        return new MapBuilder<>(new LinkedHashMap<K, V>(), entries);
+        return new MapBuilder<>(new LinkedHashMap<>(), entries);
     }
 }
