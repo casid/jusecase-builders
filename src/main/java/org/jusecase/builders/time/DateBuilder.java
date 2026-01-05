@@ -48,22 +48,6 @@ public class DateBuilder implements Builder<Date> {
         return this;
     }
 
-    /**
-     * @deprecated Use {@link #withFormat(String)} instead
-     */
-    @Deprecated
-    public DateBuilder with(String string, String format) {
-        return this.with(string).withFormat(format);
-    }
-
-    /**
-     * @deprecated Use {@link #withFormat(SimpleDateFormat)} instead
-     */
-    @Deprecated
-    public DateBuilder with(String string, SimpleDateFormat format) {
-        return this.with(string).withFormat(format);
-    }
-
     public Date build() {
         if (string == null) {
             return new Date();
