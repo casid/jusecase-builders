@@ -44,4 +44,11 @@ public class SetBuilderTest {
    public void sortedSetCanBeBuilt() {
       assertThat(a(sortedSet()).getClass()).isEqualTo(TreeSet.class);
    }
+
+   @Test
+   public void sortedSetCanBeBuilt_string() {
+      Set<String> set = a(sortedSet("a", "c", "b"));
+      assertThat(set.getClass()).isEqualTo(TreeSet.class);
+      assertThat(set).containsExactly("a", "b", "c");
+   }
 }
